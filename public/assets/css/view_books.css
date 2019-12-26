@@ -1,0 +1,43 @@
+html, body{
+    padding:0;
+    margin:0;
+}
+
+.name_title{
+    background-color: #87CEEB;
+    display: flex;
+    align-items: center;
+    height: 10em;
+    justify-content: center;
+
+}
+.name_title h1{
+    color: #6600ff;
+    margin: 0;
+}
+.global_container{
+    margin-left: -10em;
+    margin-top: 3em;
+}
+.block_book {
+    margin-top: 10px;
+position: absolute;
+    height: 200px;
+    width: 50em;
+}
+
+.block_book .image {
+
+  /*  float:left; /* Выравнивание по левому краю */
+   /* margin-right: 100%;*/
+}
+.block_book .name {
+    float: left;
+    margin-top: -200px;
+    margin-left: 200px;
+}
+.category{
+    float: left;
+    margin-top: -180px;
+    margin-left: 200px;
+}

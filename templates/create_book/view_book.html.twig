@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ViewBookController!{% endblock %}
+
+{% block body %}
+    <style>
+        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    </style>
+
+
+    <div class="container">
+        <h1>Hello This ViewBook! ✅</h1>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+            <div class="form-group">
+                <label><b>Book name - </b></label> {{ book.name }} <br>
+                 <label><b>Book image - </b></label><br>
+                <img src="{{ book.image }}" width="150" height="200"><br>
+                <label><b>Categories this book:</b></label><br>
+                {%   for cat in book.category %}
+                    <label> {{ cat.name }} </label>
+                {% endfor %}
+
+
+                {%   for rol in app.user.roles %}
+                    {% if (rol == "ROLE_ADMIN") %}
+                        <form action="/book/{{ book.id }}" method="post">
+                    <input type="submit" class="button_delete" method="post" value="delete this book">
+                        </form>
+                            {% endif %}
+                {% endfor %}
+
+<!----
+                {{ form_start(form) }}
+
+                {{ form_widget(form.category) }}
+
+                {{ form_end(form) }}
+                ---->
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+    </head>
+{% block stylesheets %}
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Renders a link tag (if your module requires any CSS)
+         <link rel="stylesheet" href="/build/app.css"> -->
+{% endblock %}
+<h1>Global Page</h1>
+<div id="block_1"><a href="/login" class="link">LogIn</a><br>
+<a href="/register" class="link">Register</a>
+    <a href="/books" class="link">all_books</a>
+</div>
+    </body>
+</html>
+
+

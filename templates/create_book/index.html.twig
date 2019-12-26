@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CreateBookController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+
+<div class="container">
+    <h1>Hello This CreateBook! ✅</h1>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+        <div class="form-group">
+            {{ label }}
+                {{ form_start(form, {'enctype': "multipart/form-data", 'method': 'get'}) }}
+                {{ form_row(form.name) }}
+            {{ form_row(form.image) }}
+            {{ form_row(form.category) }}
+                <input type="submit" value="Создать" name="button1" formnovalidate>
+                {{ form_end(form) }}
+        </div>
+
+    </div>
+</div>
+{% endblock %}

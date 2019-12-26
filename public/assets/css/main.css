@@ -1,0 +1,22 @@
+body{
+    font-family: sans-serif;
+}
+h1 {
+    font-weight: lighter;
+    color: #5eb5e0;
+
+}
+.link {
+    color: #AA3333;
+    text-decoration: none;
+}
+#block_1 {
+    margin-top: 25px;
+
+}
+#block_1 A{
+    margin-right: 100%;
+    font-size: 20px;
+    display: block;
+    margin-top: 25px;
+}
