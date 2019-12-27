@@ -1,6 +1,7 @@
 html, body{
     padding:0;
     margin:0;
+    height: 100%;
 }
 
 .name_title{
@@ -40,4 +41,10 @@ position: absolute;
     float: left;
     margin-top: -180px;
     margin-left: 200px;
+}
+.navigation{
+    color: #6600ff;
+position: absolute;
+    margin-top: -100px;
+    float: left;
 }

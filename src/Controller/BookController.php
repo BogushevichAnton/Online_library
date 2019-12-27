@@ -11,7 +11,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Book;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
-
+use Knp\Component\Pager\PaginatorInterface;
+use App\Entity\Appointments;
 
 class BookController extends AbstractController
 {
@@ -19,12 +20,29 @@ class BookController extends AbstractController
      * @Route("/books", name="book_all")
      */
 
-    public function all()
+    public function all(Request $request, PaginatorInterface $paginator)
     {
+        // Устанавливаем количество записей, которые будут выводиться на одной странице
+       // $quantity = 5;
+        // Ограничиваем количество ссылок, которые будут выводиться перед и
+        // после текущей страницы
+      //  $limit=3;
+      //  $em = $this->getDoctrine()->getManager();
 
         $books = $this->getDoctrine()
             ->getRepository(Book::class)
             ->findAll();
+
+
+        $appointments = $paginator->paginate(
+        // Doctrine Query, not results
+            $books,
+            // Define the page parameter
+            $request->query->getInt('page', 1),
+            // Items per page
+            3
+        );
+
       //  $entityManager = $this->getDoctrine()->getManager();
         if (!$books) {
             throw $this->createNotFoundException(
@@ -37,16 +55,10 @@ class BookController extends AbstractController
       //  $form = $this->createForm(ViewBooksType::class, $book);
 
         return $this->render('create_book/view_books.html.twig', [
-            'books' => $books,
+            'appointments' => $appointments,
         ]);
 
-        // tell Doctrine you want to (eventually) save the Product (no queries yet)
-       // $entityManager->persist($book);
-
-        // actually executes the queries (i.e. the INSERT query)
-      //  $entityManager->flush();
-
-        return new Response('Saved new product with id '.$book->getId());
+       // return new Response('Saved new product with id '.$book->getId());
     }
 
 
@@ -121,7 +133,6 @@ public function delete($id)
    // dd($book);
 
 }
-
-
 }
+
 
