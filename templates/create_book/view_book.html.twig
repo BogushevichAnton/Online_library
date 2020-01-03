@@ -28,6 +28,10 @@
                         <form action="/book/{{ book.id }}" method="post">
                     <input type="submit" class="button_delete" method="post" value="delete this book">
                         </form>
+
+                        <form action="/book/edit/{{ book.id }}" method="post">
+                            <input type="submit" class="button_edit" method="post" value="edit this book">
+                        </form>
                             {% endif %}
                 {% endfor %}
 

@@ -31,7 +31,7 @@ class CreateBookController extends AbstractController
     }
 
     /**
-     * @Route("/create/book", methods={"POST"})
+     * @Route("/create/book", methods={"PUT"})
      */
     public function trash(Request $request)
     {
@@ -42,14 +42,12 @@ class CreateBookController extends AbstractController
         if(isset($_POST['button1'])) {
 
 
-            //  $form->handleRequest($request);
+          //  $form->handleRequest($request);
             $params = $request->request->get('create_book');
-
-
             $param_name = $params['name'];
             $param_image = $params['image'];
 
-            if ($param_name == '') {
+            if ($param_name == '' or $param_image == '') {
              //   $book = new Book();
               //  $form = $this->createForm(CreateBookType::class, $book);
                 //  return new Response()
@@ -64,23 +62,20 @@ class CreateBookController extends AbstractController
 
 
             $param_category_id = $params['category'];
+            $book = new Book();
+            foreach($param_category_id as $category_id_for_add)
+            {
+                $category = $entityManager->getRepository(Category::class)->find($category_id_for_add);
+                $book->addCategory($category);
+                $entityManager->persist($category);
+            }
+          //  dd($param_category_id);
 
-
-            $category = $entityManager->getRepository(Category::class)->find($param_category_id);
             //   $category->setName($category);
 
-            $book = new Book();
+
             $book->setName($param_name);
             $book->setImage($param_image);
-            $book->addCategory($category);
-
-
-            /*   dump($book);
-
-               dump($category);
-               dd($category);
-       */
-            $entityManager->persist($category);
             $entityManager->persist($book);
             $entityManager->flush();
 

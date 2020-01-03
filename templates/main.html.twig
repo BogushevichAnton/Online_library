@@ -11,9 +11,31 @@
          <link rel="stylesheet" href="/build/app.css"> -->
 {% endblock %}
 <h1>Global Page</h1>
+{% if app.user %}
+
+<div class="mb-3">
+    You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+</div>
+<a href="/books" class="link">all_books</a>
+
+        {% for role in app.user.roles %}
+            {% if role == "ROLE_ADMIN" %}
+                <!----
+                    ZDES STRANIZI DLYA ODMENA
+
+                ------>
+        <div id="create_book"><a href="/create/book" class="link">Create/Book</a><br>
+        </div>
+
+            {% else %}
+            {% endif %}
+        {% endfor %}
+
+
+{% else %}
 <div id="block_1"><a href="/login" class="link">LogIn</a><br>
 <a href="/register" class="link">Register</a>
-    <a href="/books" class="link">all_books</a>
+    {% endif %}
 </div>
     </body>
 </html>

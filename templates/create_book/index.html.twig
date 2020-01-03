@@ -15,7 +15,7 @@
 
         <div class="form-group">
             {{ label }}
-                {{ form_start(form, {'enctype': "multipart/form-data", 'method': 'get'}) }}
+                {{ form_start(form, {'enctype': "multipart/form-data", 'method': 'put'}) }}
                 {{ form_row(form.name) }}
             {{ form_row(form.image) }}
             {{ form_row(form.category) }}
