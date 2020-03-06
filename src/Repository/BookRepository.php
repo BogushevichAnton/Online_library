@@ -18,10 +18,9 @@ class BookRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Book::class);
     }
+
     public function findByCategory($value): array
     {
-
-
     }
     // /**
     //  * @return Book[] Returns an array of Book objects

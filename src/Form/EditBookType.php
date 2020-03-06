@@ -15,14 +15,15 @@ class EditBookType extends AbstractType
         $builder
             ->add('name')
             ->add('image')
-            ->add('category')
-        ;
+            ->add('category');
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults([
-            'data_class' => Book::class,
-        ]);
+        $resolver->setDefaults(
+            [
+                'data_class' => Book::class,
+            ]
+        );
     }
 }

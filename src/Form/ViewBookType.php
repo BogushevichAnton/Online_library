@@ -17,14 +17,15 @@ class ViewBookType extends AbstractType
         $builder
             //->add('name', TextType::class, ['required' => true])
             //->add('image')
-            ->add('category', CollectionType::class)
-        ;
+            ->add('category', CollectionType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults([
-            'data_class' => Book::class,
-        ]);
+        $resolver->setDefaults(
+            [
+                'data_class' => Book::class,
+            ]
+        );
     }
 }

@@ -16,17 +16,15 @@ class CreateBookType extends AbstractType
     {
         $builder
             ->add('name', TextType::class)
-            ->add('image', TextType::class)
-            ->add('category')
-
-
-        ;
+            ->add('category');
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults([
-            'data_class' => Book::class,
-        ]);
+        $resolver->setDefaults(
+            [
+                'data_class' => Book::class,
+            ]
+        );
     }
 }

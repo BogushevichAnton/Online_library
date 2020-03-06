@@ -14,7 +14,6 @@ class CategoryController extends AbstractController
      */
     public function index()
     {
-
         /*$entityManager = $this->getDoctrine()->getManager();
 
         $category = new Category();
@@ -26,8 +25,11 @@ class CategoryController extends AbstractController
         // actually executes the queries (i.e. the INSERT query)
         $entityManager->flush();
 */
-        return $this->render('category/index.html.twig', [
-            'controller_name' => 'CategoryController',
-        ]);
+        return $this->render(
+            'category/index.html.twig',
+            [
+                'controller_name' => 'CategoryController',
+            ]
+        );
     }
 }

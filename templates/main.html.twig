@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+</head>
 {% block stylesheets %}
     <link rel="stylesheet" href="/assets/css/main.css">
 
@@ -18,26 +18,26 @@
 </div>
 <a href="/books" class="link">all_books</a>
 
-        {% for role in app.user.roles %}
-            {% if role == "ROLE_ADMIN" %}
-                <!----
-                    ZDES STRANIZI DLYA ODMENA
+{% for role in app.user.roles %}
+    {% if role == "ROLE_ADMIN" %}
+        <!----
+            ZDES STRANIZI DLYA ODMENA
 
-                ------>
+        ------>
         <div id="create_book"><a href="/create/book" class="link">Create/Book</a><br>
         </div>
 
-            {% else %}
-            {% endif %}
-        {% endfor %}
+    {% else %}
+    {% endif %}
+{% endfor %}
 
 
 {% else %}
 <div id="block_1"><a href="/login" class="link">LogIn</a><br>
-<a href="/register" class="link">Register</a>
+    <a href="/register" class="link">Register</a>
     {% endif %}
 </div>
-    </body>
+</body>
 </html>
 
 

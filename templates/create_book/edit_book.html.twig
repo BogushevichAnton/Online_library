@@ -3,17 +3,17 @@
 {% block title %}Hello BookController!{% endblock %}
 
 {% block body %}
-<div class="form-group">
-    <label><b>Book name - </b></label> {{ book_edit.name }} <br>
-    <label><b>Book image - </b></label><br>
-    <img src="{{ book_edit.image }}" width="150" height="200"><br>
-    <label><b>Categories this book:</b></label><br>
-    {%   for cat in book_edit.category %}
-        <label> {{ cat.name }} </label>
-    {% endfor %}
+    <div class="form-group">
+        <label><b>Book name - </b></label> {{ book_edit.name }} <br>
+        <label><b>Book image - </b></label><br>
+        <img src="{{ book_edit.image }}" width="150" height="200"><br>
+        <label><b>Categories this book:</b></label><br>
+        {% for cat in book_edit.category %}
+            <label> {{ cat.name }} </label>
+        {% endfor %}
 
-    <br><b><h1>New Options</h1></b>
-    < class="form-group">
+        <br><b><h1>New Options</h1></b>
+
         {{ label }}
         {{ form_start(form, {'enctype': "multipart/form-data", 'method': 'put'}) }}
         {{ form_row(form.name) }}
@@ -25,5 +25,5 @@
         {{ form_end(form) }}
     </div>
 
-</div>
+    </div>
 {% endblock %}

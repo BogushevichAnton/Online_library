@@ -4,8 +4,17 @@
 
 {% block body %}
     <style>
-        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+        .example-wrapper {
+            margin: 1em auto;
+            max-width: 800px;
+            width: 95%;
+            font: 18px/1.5 sans-serif;
+        }
+
+        .example-wrapper code {
+            background: #F5F5F5;
+            padding: 2px 6px;
+        }
     </style>
 
 
@@ -15,27 +24,28 @@
 
             <div class="form-group">
                 <label><b>Book name - </b></label> {{ book.name }} <br>
-                 <label><b>Book image - </b></label><br>
+                <label><b>Book image - </b></label><br>
                 <img src="{{ book.image }}" width="150" height="200"><br>
                 <label><b>Categories this book:</b></label><br>
-                {%   for cat in book.category %}
+                {% for cat in book.category %}
                     <label> {{ cat.name }} </label>
                 {% endfor %}
 
-
-                {%   for rol in app.user.roles %}
+                {% if app.user %}
+                {% for rol in app.user.roles %}
                     {% if (rol == "ROLE_ADMIN") %}
                         <form action="/book/{{ book.id }}" method="post">
-                    <input type="submit" class="button_delete" method="post" value="delete this book">
+                            <input type="submit" class="button_delete" method="post" value="delete this book">
                         </form>
 
                         <form action="/book/edit/{{ book.id }}" method="post">
                             <input type="submit" class="button_edit" method="post" value="edit this book">
                         </form>
-                            {% endif %}
+                    {% endif %}
                 {% endfor %}
-
-<!----
+                {% else %}
+                {% endif %}
+                <!----
                 {{ form_start(form) }}
 
                 {{ form_widget(form.category) }}

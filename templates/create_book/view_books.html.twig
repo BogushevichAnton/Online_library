@@ -12,50 +12,59 @@
 
 {% block body %}
     <style>
-        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+        .example-wrapper {
+            margin: 1em auto;
+            max-width: 800px;
+            width: 95%;
+            font: 18px/1.5 sans-serif;
+        }
+
+        .example-wrapper code {
+            background: #F5F5F5;
+            padding: 2px 6px;
+        }
     </style>
 
     <div class="name_title">
         <h1>
             Hello This AllBooks in Library
         </h1>
-    <div class="search_by_category">
-        <form action="/books" method="post">
-            <input name="value" type="text" placeholder="search by categories" >
-            <button type="submit">Search</button>
+        <div class="search_by_category">
+            <form action="/books" method="post">
+                <input name="value"  type="text" placeholder="search by categories">
+                <button type="submit">Search</button>
 
-        </form>
-    </div>
+            </form>
+        </div>
     </div>
 
     <div class="container">
-         <div class="global_container">
-             {% for appointment in appointments %}
-             <div class="block_book">
-                 <div class="image">
-                     <img src="{{ appointment.image  }}" width="150" height="200" class="image">
-                 </div>
-                 <div class="name">
-                     <b>name_book: </b>
-                     <a href="/book/{{ appointment.id }}">
-                         {{ appointment.name }}
-                     </a>
-                 </div>
-                 <div class="category">
-                     <b>genre: </b>
-                     {%   for categ in appointment.category %}
-                         <label> {{ categ.name }} </label>
-                     {% endfor %}
-                 </div>
-        {% endfor %}
+        <div class="global_container">
+            {% for appointment in appointments %}
+            <div class="block_book">
+                <div class="image">
+                    <img src="{{ appointment.image }}" width="150" height="200" class="image">
+                </div>
+                <div class="name">
+                    <b>name_book: </b>
+                    <a href="/book/{{ appointment.id }}">
+                        {{ appointment.name }}
+                    </a>
+                </div>
+                <div class="category">
+                    <b>genre: </b>
+                    {% for categ in appointment.category %}
+                        <label> {{ categ.name }} </label>
+                    {% endfor %}
+                </div>
+                {% endfor %}
 
-         </div>
+            </div>
 
+        </div>
     </div>
-    </div>
 
-    <div class="navigation" >
+    <div class="navigation">
         navigation
         {{ knp_pagination_render(appointments) }}
     </div>

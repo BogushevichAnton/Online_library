@@ -17,8 +17,12 @@ class RegistrationController extends AbstractController
     /**
      * @Route("/register", name="app_register")
      */
-    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, LoginFormAuthenticator $authenticator): Response
-    {
+    public function register(
+        Request $request,
+        UserPasswordEncoderInterface $passwordEncoder,
+        GuardAuthenticatorHandler $guardHandler,
+        LoginFormAuthenticator $authenticator
+    ): Response {
         $user = new Users();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
@@ -47,8 +51,11 @@ class RegistrationController extends AbstractController
             );
         }
 
-        return $this->render('registration/register.html.twig', [
-            'registrationForm' => $form->createView(),
-        ]);
+        return $this->render(
+            'registration/register.html.twig',
+            [
+                'registrationForm' => $form->createView(),
+            ]
+        );
     }
 }

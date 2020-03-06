@@ -5,18 +5,18 @@
 {% block body %}
     <h1>Register</h1>
     {% if app.user %}
-    <div class="mb-3">
-        You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
-    </div>
+        <div class="mb-3">
+            You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+        </div>
 
 
     {% else %}
-    {{ form_start(registrationForm) }}
+        {{ form_start(registrationForm) }}
         {{ form_row(registrationForm.email) }}
         {{ form_row(registrationForm.plainPassword) }}
         {{ form_row(registrationForm.agreeTerms) }}
 
         <button class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+        {{ form_end(registrationForm) }}
     {% endif %}
 {% endblock %}
