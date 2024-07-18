@@ -1,3 +1,6 @@
-# Symfony project
-
-Online library
+# Online Library
+___
+# Technologies
+___
+- Symfony
+- PHP
